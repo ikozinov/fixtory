@@ -33,13 +33,13 @@ func NewFactory[T any](t *testing.T, v T) *Factory[T] {
 	return &Factory[T]{t: t, productType: reflect.PtrTo(reflect.TypeOf(v)), index: 0, last: v}
 }
 
-func (uf *Factory[T]) NewBuilder(bluePrint BluePrintFunc[T], traits ...T) *Builder[T] {
-	return &Builder[T]{factory: uf, bluePrint: bluePrint, traits: traits}
+func (f *Factory[T]) NewBuilder(bluePrint BluePrintFunc[T], traits ...T) *Builder[T] {
+	return &Builder[T]{factory: f, bluePrint: bluePrint, traits: traits}
 }
 
-func (uf *Factory[T]) Reset() {
-	uf.last = reflect.New(uf.productType.Elem()).Elem().Interface().(T)
-	uf.index = 0
+func (f *Factory[T]) Reset() {
+	f.last = reflect.New(f.productType.Elem()).Elem().Interface().(T)
+	f.index = 0
 }
 
 func (b *Builder[T]) EachParam(params ...T) *Builder[T] {
@@ -100,9 +100,9 @@ func (b *Builder[T]) build() *T {
 	if len(b.eachParam) > b.index {
 		MapNotZeroFields(b.eachParam[b.index], product)
 	}
-	for _, f := range b.zeroFields {
-		uf := reflect.ValueOf(product).Elem().FieldByName(f)
-		uf.Set(reflect.Zero(uf.Type()))
+	for _, zf := range b.zeroFields {
+		f := reflect.ValueOf(product).Elem().FieldByName(zf)
+		f.Set(reflect.Zero(f.Type()))
 	}
 
 	b.factory.last = reflect.ValueOf(product).Elem().Interface().(T)
