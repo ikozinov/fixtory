@@ -1,4 +1,4 @@
-module github.com/k-yomo/fixtory
+module github.com/ikozinov/fixtory
 
 go 1.16
 

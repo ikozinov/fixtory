@@ -9,7 +9,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/k-yomo/fixtory/pkg/astutil"
+	"github.com/ikozinov/fixtory/pkg/astutil"
 	"golang.org/x/xerrors"
 )
 

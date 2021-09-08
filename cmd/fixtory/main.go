@@ -3,15 +3,16 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/fatih/color"
-	"github.com/k-yomo/fixtory"
-	"golang.org/x/xerrors"
 	"io"
 	"log"
 	"os"
 	"path"
 	"path/filepath"
 	"strings"
+
+	"github.com/fatih/color"
+	"github.com/ikozinov/fixtory"
+	"golang.org/x/xerrors"
 )
 
 var version string

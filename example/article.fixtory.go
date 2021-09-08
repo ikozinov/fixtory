@@ -3,7 +3,7 @@
 package example
 
 import (
-	"github.com/k-yomo/fixtory"
+	"github.com/ikozinov/fixtory"
 	"testing"
 )
 

@@ -9,7 +9,7 @@ import (
 {{- range .ImportPackages }}
 	{{ . }}
 {{- end}}
-	"github.com/k-yomo/fixtory"
+	"github.com/ikozinov/fixtory"
 	"testing"
 )
 
